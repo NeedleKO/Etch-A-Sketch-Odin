@@ -5,7 +5,10 @@ let amountOfGrids = 16;
 
 
 function createGridBoxes(gridCount) {
-    
+
+    const wrapper = document.createElement("div")
+    wrapper.classList.add("wrapper")
+
     for (let i = 0; i < gridCount; i++) {
         let gridBox = document.createElement("div")
         gridBox.classList.add("gridBox")
@@ -21,10 +24,10 @@ function createGridBoxes(gridCount) {
             //mouse color hover effect
             gridSquares.addEventListener("mouseover", function() {
                 this.classList.add("gridSquaresBlack")
-                
             })
+            wrapper.appendChild(gridBox)
         }
-        
+        containerOfGrid.appendChild(wrapper)
     }
     
 }
@@ -38,8 +41,13 @@ gridBtn.addEventListener("click", function() {
     do{
         var changeGrid = parseInt(window.prompt("Please enter a number from 1 to 100", ""), 10);
         amountOfGrids = changeGrid;
+
+        
           
     }while(isNaN(changeGrid) || changeGrid > 100 || changeGrid < 1);
-    createGridBoxes(amountOfGrids)
-
+    
+    const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
+        createGridBoxes(amountOfGrids)
+    
 })
