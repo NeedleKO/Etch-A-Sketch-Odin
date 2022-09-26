@@ -1,13 +1,11 @@
-
 const containerOfGrid = document.querySelector(".container")
-
-const amountOfGrids = 16;
-
-
+const gridBtn = document.querySelector(".changeGridBtn")
+let amountOfGrids = 16;
 
 
 
 function createGridBoxes(gridCount) {
+    
     for (let i = 0; i < gridCount; i++) {
         let gridBox = document.createElement("div")
         gridBox.classList.add("gridBox")
@@ -23,6 +21,7 @@ function createGridBoxes(gridCount) {
             //mouse color hover effect
             gridSquares.addEventListener("mouseover", function() {
                 this.classList.add("gridSquaresBlack")
+                
             })
         }
         
@@ -35,3 +34,12 @@ createGridBoxes(amountOfGrids)
 
 
 
+gridBtn.addEventListener("click", function() {
+    do{
+        var changeGrid = parseInt(window.prompt("Please enter a number from 1 to 100", ""), 10);
+        amountOfGrids = changeGrid;
+          
+    }while(isNaN(changeGrid) || changeGrid > 100 || changeGrid < 1);
+    createGridBoxes(amountOfGrids)
+
+})
