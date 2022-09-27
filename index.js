@@ -23,7 +23,18 @@ function createGridBoxes(gridCount) {
             gridBox.appendChild(gridSquares)
             //mouse color hover effect
             gridSquares.addEventListener("mouseover", function() {
-                this.classList.add("gridSquaresBlack")
+                //color in black
+                //this.classList.add("gridSquaresBlack")
+
+                //random color
+                let symbols, color;
+                symbols = "0123456789ABCDEF"
+                color = "#";
+                for(let i = 0; i < 6; i++) {
+                color = color + symbols[Math.floor(Math.random() * 16)];
+                }
+                gridSquares.style.background = color;
+                //random color end
             })
             wrapper.appendChild(gridBox)
         }
@@ -36,18 +47,15 @@ createGridBoxes(amountOfGrids)
 
 
 
-
 gridBtn.addEventListener("click", function() {
     do{
-        var changeGrid = parseInt(window.prompt("Please enter a number from 1 to 100", ""), 10);
-        amountOfGrids = changeGrid;
-
+        var changeGrid = parseInt(window.prompt("Please enter a number from 1 to 100", ""));
         
-          
     }while(isNaN(changeGrid) || changeGrid > 100 || changeGrid < 1);
     
     const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        amountOfGrids = changeGrid;
         createGridBoxes(amountOfGrids)
-    
+
 })
